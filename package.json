@@ -1,0 +1,19 @@
+{
+  "name": "yy-many-convert",
+  "version": "1.0.0",
+  "description": "convert super many media file",
+  "main": "yy-many-convert.js",
+  "scripts": {
+  },
+  "type":"module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yy-tromb/yy-many-convert.git"
+  },
+  "author": "yy-tromb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yy-tromb/yy-many-convert/issues"
+  },
+  "homepage": "https://github.com/yy-tromb/yy-many-convert#readme"
+}
