@@ -42,6 +42,7 @@ const converting = Array(MAX_PROCESS);
 let successed = 0;
 let failed = 0;
 let converted = 0;
+const failed_errors = [];
 
 const source_file_dirents = await fs
     .readdir(source_folder, {
@@ -70,7 +71,8 @@ for (const [index, dirent] of source_file_dirents.entries()) {
         await Promise.race(processes) // await a process that is successed or failed.
             .finally(() => (id = get_not_running_id()))
             .catch(handle_error);
-        const new_process = run( // make new process
+        const new_process = run(
+            // make new process
             CONVERT_COMMAND,
             compile_args(source_file, output_file),
             {
@@ -82,7 +84,7 @@ for (const [index, dirent] of source_file_dirents.entries()) {
                 ((id) => {
                     return (e) => {
                         handle_error(e);
-                        return on_convert_end(id, "failed"); // close id in scope
+                        return on_convert_end(id, "failed", e); // close id in scope
                     };
                 })(id)
             ); // this instance function returns function
@@ -90,7 +92,9 @@ for (const [index, dirent] of source_file_dirents.entries()) {
         isrunnings[id] = true;
         converting[id] = source_file;
         console.info(
-            `[${source_file}] is started to convert. (${index+1}/${source_files_len}) is started to convert.`
+            `[${source_file}] is started to convert. (${
+                index + 1
+            }/${source_files_len}) is started to convert.`
         );
     }
 }
@@ -98,11 +102,12 @@ Promise.allSettled(processes).then(() => {
     console.info("\nAll Finished!");
     console.info(
         `Successed is ${successed}/${source_files_len}.
-Failed is ${failed}/${source_files_len}.`
+Failed is ${failed}/${source_files_len}.
+${failed_errors}`
     );
 });
 
-function on_convert_end(id, status) {
+function on_convert_end(id, status, error) {
     isrunnings[id] = false;
     if (converting[id] !== undefined) {
         converted++;
@@ -113,6 +118,7 @@ function on_convert_end(id, status) {
             successed++;
         } else if (status === "failed") {
             failed++;
+            failed_errors.push(error);
         } else {
             throw Error("status message is incorrent.");
         }
