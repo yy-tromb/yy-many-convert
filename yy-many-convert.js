@@ -7,7 +7,7 @@ const run = promisify(execFile);
 if (process.argv.length < 4) {
     console.error(
         `Arguments is not enough
-Usage: node yy-many-convert.js {source_folder} {output_folder}`
+Usage: path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`
     );
 }
 
