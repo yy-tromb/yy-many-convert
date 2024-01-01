@@ -1,5 +1,5 @@
 # yy-many-convert
-convert super many media file
+convert super many media file for me
 ## Usage  
 ### **You need to install [Node.js](https://nodejs.org/en)**  
 Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`  
