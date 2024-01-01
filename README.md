@@ -2,7 +2,7 @@
 convert super many media file
 ## Usage  
 ### **You need to install [Node.js](https://nodejs.org/en)**  
-`path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`  
+Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`  
 ## Custom
 Please edit some code.  
 in line 14:`const MAX_PROCESS = 15;` for your choice. I recomend that this value is less your computer core counts.  
