@@ -4,14 +4,14 @@ import { execFile } from "child_process";
 import { promisify } from "util";
 const run = promisify(execFile);
 
-if (process.argv.length < 4) {
+if (process.argv.length < 5) {
     console.error(
         `Arguments is not enough
-Usage: path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`
+Usage: path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder} {MAX_PROCESS (int)}`
     );
 }
 
-const MAX_PROCESS = 15;
+const MAX_PROCESS = Number(process.argv[4]);
 const CONVERT_COMMAND = "ffmpeg";
 const compile_args = (source_file, output_file) => {
     return [
@@ -25,7 +25,7 @@ const compile_args = (source_file, output_file) => {
         "18",
         "-still-picture",
         "1",
-        "-y",
+        "-n",
         output_file,
     ];
 };
