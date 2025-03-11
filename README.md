@@ -61,5 +61,5 @@ const compile_args = (source_file, output_file) => {
 `source_file` is file that you want to convert.  
 `output_file` is file that was converted.  
 `source_file` and `output_file` is automatically given.  
-in line 32:`const OUTPUT_EXTENTION = ".avif";` for your favorite extention like m4a. ***Note that extention must be different from source file extention.***  
+in line 32:`const OUTPUT_EXTENTION = ".avif";` for your favorite extention like m4a.   
 ->`const OUTPUT_EXTENTION = ".m4a";`. Please include `.`  
