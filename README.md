@@ -2,10 +2,10 @@
 convert super many media file for me
 ## Usage  
 ### **You need to install [Node.js](https://nodejs.org/en)**  
-Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder}`  
+Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder} {MAX_PROCESS (int)}`  
+### I recomend that MAX_PROCESS value is less your computer core counts.  
 ## Custom
 Please edit some code.  
-in line 14:`const MAX_PROCESS = 15;` for your choice. I recomend that this value is less your computer core counts.  
 in line 15:`const CONVERT_COMMAND = "ffmpeg";` for your favorite converter like qaac.  
 -> `const CONVERT_COMMAND = "qaac";`  
 below line 16,
