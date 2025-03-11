@@ -3,7 +3,7 @@ convert super many media file for me
 ## Usage  
 ### **You need to install [Node.js](https://nodejs.org/en)**  
 Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder} {MAX_PROCESS (int)}`  
-### I recomend that MAX_PROCESS value is less your computer core counts.  
+### I recomend that MAX_PROCESS value is less the number of your computer cores.  
 ## Custom
 Please edit some code.  
 in line 15:`const CONVERT_COMMAND = "ffmpeg";` for your favorite converter like qaac.  
@@ -59,7 +59,7 @@ const compile_args = (source_file, output_file) => {
 };
 ```  
 source_file is file that you want to convert.  
-output_file is file that is converted.  
+output_file is file that was converted.  
 source_file and output_file is automatically given.  
 in line 32:`const OUTPUT_EXTENTION = ".avif";` for your favorite extention like m4a.  
 ->`const OUTPUT_EXTENTION = ".m4a";`. Please include `.`  
