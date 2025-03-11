@@ -35,6 +35,8 @@ const compile_args = (source_file, output_file) => {
         "libaom-av1",
         "-crf",
         "23",
+        "-cpu-used",
+        "1",
         "-still-picture",
         "1",
         "-update",
@@ -118,9 +120,17 @@ Promise.allSettled(processes).then(() => {
     console.info("\nAll Finished!");
     console.info(
         `Successed is ${successed}/${source_files_len}.
-Failed is ${failed}/${source_files_len}.
-${failed_errors}`
+Failed is ${failed}/${source_files_len}.`
     );
+    if (failed_errors.length > 0) {
+        const errors_json = JSON.stringify(failed_errors);
+        fs.writeFile(path.resolve(output_folder, "errors.json"), errors_json, {
+            encoding: "utf-8",
+        }).catch((e) => {
+            console.error("\x1b[1;37;41mError on writing errors.json\x1b[m");
+            console.error(e);
+        });
+    }
 });
 
 function on_convert_end(id, status, error) {
