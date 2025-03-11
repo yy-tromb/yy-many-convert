@@ -14,20 +14,37 @@ const compile_args = (source_file, output_file) => {
     return [
         "-i",
         source_file,
-        "-c:v",
-        "libaom-av1",
+        "-filter_complex",
+        "[0:v]format=yuva444p,colorspace=bt709:iall=bt601-6-525:fast=1[color]",
+        "-map",
+        "[color]",
+        "-color_range",
+        "1",
+        "-colorspace",
+        "1",
+        "-color_primaries",
+        "1",
+        "-color_trc",
+        "1",
         "-pix_fmt",
         "yuv420p",
+        "-c:v",
+        "libaom-av1",
         "-crf",
-        "18",
+        "23",
         "-still-picture",
         "1",
-        "-y",
+        "-update",
+        "true",
+        "-frames:v",
+        "1",
+        "-n",
         output_file,
     ];
 };
 ```  
-edit for your favorite converter arguments like qaac.  
+This example convert image (expected screenshots png(rgb24)) to avif(yuv420p).  
+Edit for your favorite converter arguments like qaac.  
 ->  
 ```js
 const compile_args = (source_file, output_file) => {
