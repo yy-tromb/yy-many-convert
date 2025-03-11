@@ -3,6 +3,7 @@ convert super many media file for me
 ## Usage  
 ### **You need to install [Node.js](https://nodejs.org/en)**  
 Usage: `path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder} {MAX_PROCESS (int)}`  
+***If there are any error occured, dump `errors.json` in output_folder***  
 ### I recomend that MAX_PROCESS value is less the number of your computer cores.  
 ## Custom
 Please edit some code.  
