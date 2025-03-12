@@ -9,6 +9,7 @@ if (process.argv.length < 5) {
         `Arguments is not enough
 Usage: path_to_Node.js path_to_yy-many-convert.js {source_folder} {output_folder} {MAX_PROCESS (int)}`
     );
+    process.exit(1);
 }
 
 const MAX_PROCESS = Number(process.argv[4]);
